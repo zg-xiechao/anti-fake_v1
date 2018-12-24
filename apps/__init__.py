@@ -4,7 +4,6 @@ from flask_session import Session
 
 
 
-
 # 数据库
 def register_db(app: Flask):
     from apps.models import db

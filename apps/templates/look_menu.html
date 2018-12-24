@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    个人中心
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="text-center">吃了吗商家管理系统</h1>
+        <hr>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong class="text-danger">{{ current_user.name }}</strong> 的菜单分类：
+            </div>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>分类名称</th>
+                    <th>菜品信息</th>
+                    <th>平均价格</th>
+                </tr>
+                </thead>
+                    <tbody>
+                    {% for menu in data %}
+                        <tr>
+                            <th>{{ loop.index }}</th>
+                            <th><a href="{{ url_for('cms.add_store') }}">{{ menu.name }}</a></th>
+                            <th></th>
+                            <th>￥</th>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
