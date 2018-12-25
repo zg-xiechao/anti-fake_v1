@@ -1,22 +1,38 @@
 import os
+from redis import Redis
 
 
-############################# 开发版 ########################################
+def get_prj_dir():
+	return os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-# 路径(数据库)
-def get_path():
-    path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    return path
+class BaseConfig(object):
+	DEBUG = True
+	SQLALCHEMY_DATABASE_URI = 'sqlite:///{}/DevDate.db'.format(get_prj_dir())
+	SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
-# 连接到sqlite数据库
-class DevBase():
-    DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///{}/DevDate.db'.format(get_path())
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+def get_redis_address():
+	return Redis(host='47.104.252.32', port=6379)
 
 
-# 开发版配置文件  CMS
-class DevCMSConfig(DevBase):
-    WTF_CSRF_SECRET_KEY = os.urandom(24)
+class DevConfig(BaseConfig):
+	SESSION_TYPE = 'redis'
+	SESSION_REDIS = get_redis_address()
+
+
+class ProductConfig(BaseConfig):
+	DEBUG = False
+	SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:psd123456@47.104.252.32/homework"
+	SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+
+class DevAPIConfig(BaseConfig):
+	SMS_LIFETIME = 300
+
+	API_REDIS = get_redis_address()
+
+	SECRET_KEY = 'FangWeiShuJuPingTai'
+	TOKEN_EXPIRES = 24 * 3600
+	CART_LIFETIME = 3600
+
