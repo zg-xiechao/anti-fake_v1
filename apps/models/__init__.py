@@ -27,10 +27,8 @@ class BaseModel(db.Model):
 
 
 
-
 # 导入子 Model
-from apps.models import UserModel
-from apps.models import MerchantModel
-
+from apps.models.MerchantModels import *
+from apps.models.UserModels import *
 
 

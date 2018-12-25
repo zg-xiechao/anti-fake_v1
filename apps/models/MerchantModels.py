@@ -1,6 +1,5 @@
 from apps.models import BaseModel, db
 
-
 # 企业信息表
 class Merchant(BaseModel):
     username = db.Column(db.String(16), unique=True, comment='商家用户名')

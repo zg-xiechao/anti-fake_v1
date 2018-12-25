@@ -18,7 +18,7 @@ def register_cms_bp(app: Flask):
 
 # 创建app
 def create_app(config: str):
-    app = Flask(__name__, static_url_path='/static/', static_folder='./static')
+    app = Flask(__name__, static_url_path='/static', static_folder='./static')
     app.config.from_object(config)
 
     # session

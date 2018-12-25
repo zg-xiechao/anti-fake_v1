@@ -1,4 +1,4 @@
-from apps.models import db, BaseModel
+from apps.models import BaseModel, db
 from werkzeug.security import check_password_hash, generate_password_hash
 
 
@@ -9,11 +9,9 @@ class AdminUser(BaseModel):
 
     _password = db.Column('password', db.String(128), comment='密码')
 
-    name = db.Column(db.String(8), comment='管理员姓名')
-
     tel = db.Column(db.String(12), unique=True, comment='电话号码')
 
-    email = db.Column(db.String(32), unique=True, comment='邮箱账号')
+    # email = db.Column(db.String(32), unique=True, comment='邮箱账号')
 
 
     @property
@@ -32,4 +30,5 @@ class AdminUser(BaseModel):
     # 校对密码
     def check_password(self, raw_passwrod):
         return check_password_hash(self._password, raw_passwrod)
+
 
