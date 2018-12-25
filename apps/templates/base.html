@@ -1,16 +1,19 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>流通企业</title>
-  <link rel="stylesheet" href="../static/css/business.css">
-  <link rel="stylesheet" href="../static/css/common.css">
-<link rel="stylesheet" href="../static/css/layui.css">
+  <title>{% block title %}{% endblock %}</title>
 
+{% block base_css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/business.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/layui.css') }}">
+{% endblock %}
+    {% block ext_css %}
 
+    {% endblock %}
 
 
   <style>
@@ -132,7 +135,7 @@
 </div>
 <div class="content layui-row">
   <div class="left_div layui-col-xs2">
-    
+
 <span class="layui-breadcrumb" lay-separator=">">
                 <a href="">首页</a>
                 <a href="">企业管理</a>
@@ -197,40 +200,18 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <td><label><input type="checkbox"><span></span></label></td>
-          <td>华美现代流通发展有限公司</td>
-          <td>66688627MA6E5HHWWE</td>
-          <td>152326525869</td>
-          <td>华美缤纷天地1栋204号</td>
-          <td class="anti-fake">是</td>
-          <td><a href="/emtoflawefm/circulatingview.html">查看</a></td>
-        </tr>
-        <tr>
-          <td><label><input type="checkbox"><span></span></label></td>
-          <td>郑州中储物资流通中心</td>
-          <td>32118627MA6E5KJDSSB</td>
-          <td>152715635892</td>
-          <td>郑州物流3栋1单元1006号</td>
-          <td class="anti-fake-no">否</td>
-          <td><a href="/emtoflawefm/circulatingview.html">查看</a></td>
-        </tr>
-        <tr>
-          <td><label><input type="checkbox"><span></span></label></td>
-          <td>德阳储物资流通中心</td>
-          <td>51218627MA6E5KJDSSQ</td>
-          <td>182715635892</td>
-          <td>德阳物流6栋5单元5007号</td>
-          <td class="anti-fake-no">是</td>
-          <td><a href="/emtoflawefm/circulatingview.html">查看</a></td>
-        </tr>
+        {% block content %}
+
+	    {% endblock %}
         </tbody>
       </table>
     </div>
   </div>
 </div>
+{% block base_js %}
 <script src="../static/js/layui.all.js"></script>
 <script src="../static/js/left.js"></script>
+{% endblock %}
 </body>
 </html>
 
