@@ -1,4 +1,4 @@
-from apps.models import db, BaseModel
+from apps.models import BaseModel, db
 
 
 # 企业信息表
