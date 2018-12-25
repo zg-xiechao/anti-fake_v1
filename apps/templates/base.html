@@ -209,8 +209,8 @@
   </div>
 </div>
 {% block base_js %}
-<script src="../static/js/layui.all.js"></script>
-<script src="../static/js/left.js"></script>
+<script src="{{ url_for('static',filename='js/layui.all.js') }}"></script>
+<script src="{{ url_for('static',filename='js/left.js') }}"></script>
 {% endblock %}
 </body>
 </html>

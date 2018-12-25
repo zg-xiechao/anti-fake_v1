@@ -14,7 +14,7 @@ def Register():
         db.session.add(s1)
         db.session.commit()
         return redirect(url_for('cms.login'))
-    return render_template('reg_login.html', flags='注册', forms=forms)
+    return render_template('index.html', flags='注册', forms=forms)
 
 
 # 用户登录
