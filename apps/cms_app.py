@@ -7,4 +7,5 @@ if __name__ == '__main__':
 
     with cms_app.app_context():
         db.create_all()
+    print(cms_app.url_map)
     cms_app.run()
