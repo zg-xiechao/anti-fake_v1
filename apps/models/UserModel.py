@@ -22,9 +22,11 @@ class AdminUser(BaseModel):
 	def password(self, value):
 		self._password = generate_password_hash(value)
 
-	def __repr__(self):
-		return "<AdminUser {}>".format(self.username)
 
 	# 校对密码
 	def check_password(self, raw_passwrod):
 		return check_password_hash(self._password, raw_passwrod)
+
+
+	def __repr__(self):
+		return "<AdminUser {}>".format(self.username)
