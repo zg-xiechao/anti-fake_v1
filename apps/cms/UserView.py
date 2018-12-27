@@ -51,11 +51,22 @@ def RestPassword():
     id = request.cookies.get('id')
     if request.method == 'POST' and forms.validate():
         u1 = AdminUser.query.filter_by(id=int(id)).first()
-        print(f'原始密码{u1.password}')
+        if u1.password == generate_password_hash(forms.oldpass.data):
+            print(f'原始密码{u1.password}')
 
         # 更改密码
-        u1.password = generate_password_hash(forms.NewPasswd.data)
-        db.session.commit()
-        print(f'新密码{u1.password}')
-        return redirect(url_for('cms.index'))
+            u1.password = generate_password_hash(forms.NewPasswd.data)
+            db.session.commit()
+            print(f'新密码{u1.password}')
+            return redirect(url_for('cms.index'))
+        else:
+            forms.errors['oldpass'] = ['密码不正确']
     return render_template('reg_login.html', flags='修改密码', forms=forms)
+
+
+# 退出登录
+@cms_bp.route('/logout/', endpoint='logout')
+def Logout():
+    resp = redirect(url_for('cms.index'))
+    resp.delete_cookie('id', path='/')
+    return resp

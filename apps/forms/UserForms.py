@@ -111,9 +111,9 @@ class ResetPasswordForm(Form):
     # 自定义字段验证
     def validate_oldpass(self, obj):
         pwd = obj.data
-        id = request.cookies.get('id')
+        id = request.cookies.get('id', None)
         u1 = AdminUser.query.filter_by(id=id).first()
-        if not id and u1.check_password(pwd):
+        if not id and not u1.check_password(pwd):
             raise validators.ValidationError('密码不正确!')
 
 
