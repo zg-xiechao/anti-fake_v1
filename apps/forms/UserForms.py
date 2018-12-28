@@ -12,7 +12,6 @@ class RegisterForms(Form):
         render_kw=({'class': 'form-control', 'placeholder': '请填写用户名!'})
     )
 
-
     password = PasswordField(
         validators=[
             validators.DataRequired(message='密码不能为空'),
@@ -22,16 +21,13 @@ class RegisterForms(Form):
         render_kw=({'class': 'form-control', 'placeholder': '请输入密码!'})
     )
 
-
     repassword = PasswordField(
         validators=[
-          validators.DataRequired(message='重复密码不能为空'),
-          validators.EqualTo('password', message='再次密码不一样')
+            validators.DataRequired(message='重复密码不能为空'),
+            validators.EqualTo('password', message='再次密码不一样')
         ],
-    render_kw=({'class':'form-control', 'placeholder':'再次输入密码!'})
+        render_kw=({'class': 'form-control', 'placeholder': '再次输入密码!'})
     )
-
-
 
 
 # 用户登录验证
@@ -45,18 +41,11 @@ class LoginForms(Form):
         render_kw=({'class': 'form-control', 'placeholder': '请输入用户名'})
     )
 
-
     password = PasswordField(
         validators=[
             validators.DataRequired(message='密码不能为空'),
-            validators.Length(min=6,message='密码不能小于6位'),
-            validators.Length(min=16,message='密码不能大于16位')
+            validators.Length(min=6, message='密码不能小于6位'),
+            validators.Length(min=16, message='密码不能大于16位')
         ],
         render_kw=({'class': 'form-control', 'placeholder': '请输入密码'})
     )
-
-
-
-
-
-

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    防伪溯源信息
+{% endblock %}
+
+{% block content %}
+<td class="td_right">
+        <table>
+          <tbody><tr>
+            <td>
+              <div id="right_top_div" _echarts_instance_="ec_1545793109487" style="-webkit-tap-highlight-color: transparent; user-select: none;"><div style="position: relative; overflow: hidden; width: 1085px; height: 350px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;"><canvas data-zr-dom-id="zr_0" width="1085" height="350" style="position: absolute; left: 0px; top: 0px; width: 1085px; height: 350px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas></div></div>
+<script type="text/javascript">
+  var myChart = echarts.init(document.getElementById('right_top_div'));
+  var option = {
+    xAxis: {
+      type: 'category',
+      data: ['医药', '农副产品', '食品', '化妆品', '饮料、酒、烟、茶', '服装、鞋、帽', '票证产品', '电子、电器产品', '日用品', '农资产品', '建筑材料', '化学原料及化学制品'],
+      axisLabel: {
+        interval: 0, //横轴信息全部显示
+        rotate: -30, //-30度角倾斜显示
+      }
+    },
+    yAxis: {
+      type: 'value'
+    },
+    series: [{
+      data: [4000, 2490, 4880, 8000, 9000, 3000, 4500, 3900, 4900, 3990, 5000, 2670],
+      type: 'bar',
+    }]
+  };
+  myChart.setOption(option);
+</script>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div>
+  <table class="layui-table table_" lay-skin="line" style="text-align:center">
+    <tbody><tr>
+      <th>选择</th>
+      <th>产品名称</th>
+      <th>产品类型</th>
+      <th>生产厂家</th>
+      <th>防伪数量</th>
+      <th>操作</th>
+      <th></th>
+    </tr>
+    {% for foo in form %}
+        <tr class="single" style="height:40px">
+      <td><label><input type="checkbox" name="td_checkbox"><span></span></label></td>
+      <td>{{ foo.pro_name }}</td>
+      <td>{{foo.pro_type}}</td>
+      <td>{{foo.pro_area}}</td>
+      <td>9000</td>
+      <td><a href="../../zfscsupervise/reltmdtshow-look.html">查看</a></td>
+      <td></td>
+    </tr>
+    {% endfor %}
+
+
+
+  </tbody></table>
+</div>
+            </td>
+          </tr>
+        </tbody></table>
+      </td>
+{% endblock %}
+
